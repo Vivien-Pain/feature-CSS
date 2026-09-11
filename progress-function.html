@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>progress() - CSS Cheat Sheet</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html">← Retour au sommaire</a>
+      <h1>9. La fonction mathématique `progress()`</h1>
+      <p><strong>Date d'introduction :</strong> Fin 2024 / Début 2025</p>
+    </header>
+    <main>
+      <h2>Explication</h2>
+      <p>
+        La fonction <code>progress()</code> est une nouvelle fonction
+        mathématique en CSS. Elle évalue la position d'une valeur entre un point
+        de départ et un point de fin, et renvoie une valeur proportionnelle
+        comprise entre 0 et 1. C'est l'outil parfait pour créer des composants
+        dont le design (taille, opacité, position) s'adapte dynamiquement et
+        fluidement en fonction de la taille de l'écran ou de leur conteneur,
+        sans utiliser d'immenses formules <code>calc()</code> complexes ou de
+        JavaScript.
+      </p>
+      <h2>Démo Live</h2>
+      <div class="demo-container">
+        <div class="progress-resize-box">
+          <p>
+            <strong>Redimensionnez cette boîte</strong> en tirant sur son bord
+            droit. La barre bleue se remplit automatiquement en fonction de la
+            largeur de la boîte (de 250px à 600px).
+          </p>
+          <div class="progress-track">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+      </div>
+      <h2>Code CSS</h2>
+      <pre><code>.progress-resize-box {
+  container-type: inline-size;
+  resize: horizontal;
+  overflow: hidden;
+  width: 300px;
+}
+
+.progress-fill {
+  width: calc(progress(100cqw, 250px, 600px) * 100%);
+}</code></pre>
+      <h2>Compatibilité et Fallback</h2>
+      <img
+        class="compatibility-icon"
+        src="./Compatibility/progress.png"
+        alt="Compatibilité CSS progress function"
+      />
+      <p>
+        <strong>Fallback :</strong> Sur les navigateurs ne supportant pas cette
+        fonction, la propriété contenant <code>progress()</code> sera ignorée.
+        La solution de repli consiste à déclarer une valeur fixe juste avant la
+        propriété dynamique (par exemple <code>width: 50%;</code>) pour assurer
+        un affichage par défaut convenable.
+      </p>
+    </main>
+  </body>
+</html>

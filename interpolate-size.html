@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animation vers Height Auto - CSS Cheat Sheet</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html">← Retour au sommaire</a>
+      <h1>2. L'animation vers height: auto (`interpolate-size`)</h1>
+      <p><strong>Date d'introduction :</strong> Septembre 2024</p>
+    </header>
+
+    <main>
+      <h2>Explication</h2>
+      <p>
+        Pendant plus de 15 ans, il était impossible d'animer proprement un
+        élément en CSS de <code>height: 0</code> vers sa taille naturelle (<code
+          >height: auto</code
+        >). Il fallait utiliser du JavaScript pour calculer la hauteur en
+        pixels, ou utiliser des "hacks" peu performants. La propriété
+        <code>interpolate-size: allow-keywords</code> permet enfin au navigateur
+        de calculer cette transition de manière totalement native et fluide.
+      </p>
+
+      <h2>Démo Live</h2>
+      <div class="demo-container">
+        <div class="accordion">
+          <div class="accordion-header">
+            Passez votre souris ici pour ouvrir l'accordéon
+          </div>
+          <div class="accordion-content">
+            <p>
+              Regardez cette fluidité ! Aucun JavaScript n'a été maltraité
+              durant cette animation. Le navigateur calcule lui-même la hauteur
+              nécessaire pour afficher ce texte, et crée une transition douce
+              depuis 0 jusqu'à la hauteur requise.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Code CSS</h2>
+      <pre><code>:root {
+  interpolate-size: allow-keywords;
+}
+
+.accordion-content {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.4s ease-out;
+}
+
+.accordion:hover .accordion-content {
+  height: auto; 
+}</code></pre>
+
+      <h2>Compatibilité et Fallback</h2>
+      <img
+        class="compatibility-icon"
+        src="./Compatibility/interpolate-size.png"
+        alt="Compatibilité CSS Interpolate Size"
+      />
+      <p>
+        <strong>Fallback :</strong> Il s'agit d'une amélioration progressive
+        (<em>Progressive Enhancement</em>). Si le navigateur ne supporte pas la
+        propriété, l'accordéon s'ouvrira et se fermera de manière instantanée,
+        sans transition, mais restera 100% fonctionnel et accessible. Aucun code
+        de secours (fallback) n'est nécessaire !
+      </p>
+    </main>
+  </body>
+</html>

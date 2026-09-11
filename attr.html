@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>attr() avancé - CSS Cheat Sheet</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html">← Retour au sommaire</a>
+      <h1>1. La fonction attr() avancée avec typage</h1>
+      <p><strong>Date d'introduction :</strong> Fin 2024 (Chrome 129+)</p>
+    </header>
+
+    <main>
+      <h2>Explication</h2>
+      <p>
+        Historiquement, la fonction <code>attr()</code> était extrêmement
+        limitée : elle ne pouvait renvoyer que des chaînes de caractères et ne
+        s'utilisait qu'avec la propriété <code>content</code> des
+        pseudo-éléments. La nouvelle spécification révolutionne cela en
+        permettant de "typer" la donnée récupérée (ex:
+        <code>type(&lt;color&gt;)</code> ou <code>type(&lt;length&gt;)</code>).
+        On peut ainsi utiliser un attribut HTML classique pour définir
+        dynamiquement une largeur, une couleur de fond, ou n'importe quelle
+        propriété CSS, sans avoir recours aux variables CSS inline !
+      </p>
+
+      <h2>Démo Live</h2>
+      <div class="demo-container">
+        <div class="attr-box" data-color="#ef4444" data-width="50%">
+          Rouge (50%)
+        </div>
+        <div class="attr-box" data-color="#22c55e" data-width="75%">
+          Vert (75%)
+        </div>
+        <div class="attr-box" data-color="#a855f7" data-width="100%">
+          Violet (100%)
+        </div>
+        <div class="attr-box">Couleur par défaut (Fallback)</div>
+      </div>
+
+      <h2>Code CSS</h2>
+      <pre><code>.attr-box {
+        background-color: #334155; /* Fallback si attr() n'est pas supporté */
+        background-color: attr(data-color type(&lt;color&gt;), #334155);
+        width: 100%;
+        width: attr(data-width type(&lt;length-percentage&gt;), 100%);
+}</code></pre>
+
+      <h2>Compatibilité et Fallback</h2>
+      <img
+        class="compatibility-icon"
+        src="./Compatibility/attr.png"
+        alt="Compatibilité CSS attr() avancé"
+      />
+      <p>
+        <strong>Fallback :</strong> Si le navigateur ne supporte pas le typage
+        dans <code>attr()</code>, la déclaration entière est ignorée. Il faut
+        donc déclarer une valeur par défaut juste au-dessus. De plus, la
+        fonction intègre nativement son propre fallback (le deuxième paramètre)
+        qui s'applique si l'attribut HTML est manquant ou invalide.
+      </p>
+    </main>
+  </body>
+</html>

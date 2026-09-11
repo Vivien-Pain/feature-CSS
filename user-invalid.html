@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>:user-invalid - CSS Cheat Sheet</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html">← Retour au sommaire</a>
+      <h1>5. La validation intelligente (`:user-invalid`)</h1>
+      <p><strong>Date d'introduction :</strong> Fin 2023</p>
+    </header>
+
+    <main>
+      <h2>Explication</h2>
+      <p>
+        Avant, utiliser la pseudo-classe <code>:invalid</code> posait un gros
+        problème d'UX : les champs obligatoires apparaissaient en rouge dès le
+        chargement de la page, agressant l'utilisateur avant même qu'il n'ait
+        commencé à taper. La pseudo-classe <code>:user-invalid</code> résout
+        cela en appliquant les styles d'erreur uniquement
+        <strong>après</strong> que l'utilisateur a interagi avec le champ (par
+        exemple, s'il tape une mauvaise adresse e-mail puis clique en dehors du
+        champ).
+      </p>
+
+      <h2>Démo Live</h2>
+      <div class="demo-container">
+        <form class="demo-form" onsubmit="event.preventDefault()">
+          <div class="form-group">
+            <label for="email">Adresse e-mail (requise)</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              required
+              placeholder="nom@exemple.com"
+            />
+            <span class="error-message"
+              >Veuillez entrer une adresse e-mail valide.</span
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="username">Nom d'utilisateur (min. 5 caractères)</label>
+            <input
+              type="text"
+              id="username"
+              class="form-control"
+              required
+              minlength="5"
+              placeholder="Votre pseudo"
+            />
+            <span class="error-message"
+              >Le nom d'utilisateur doit contenir au moins 5 caractères.</span
+            >
+          </div>
+
+          <p>
+            <small
+              ><em
+                >Essayez de cliquer dans un champ, de taper quelque chose
+                d'invalide, puis de cliquer ailleurs. Remarquez que les champs
+                ne sont pas rouges au chargement initial !</em
+              ></small
+            >
+          </p>
+        </form>
+      </div>
+
+      <h2>Code CSS</h2>
+      <pre><code>.form-control:user-invalid {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+.form-control:user-valid {
+  border-color: #22c55e;
+  background-color: #f0fdf4;
+}
+
+.form-control:user-invalid ~ .error-message {
+  display: block;
+}</code></pre>
+
+      <h2>Compatibilité et Fallback</h2>
+      <img
+        class="compatibility-icon"
+        src="./Compatibility/user-invalid.png"
+        alt="Compatibilité CSS user-invalid"
+      />
+      <p>
+        <strong>Fallback :</strong> Sur les anciens navigateurs, la
+        pseudo-classe sera simplement ignorée. Pour offrir une expérience
+        similaire sans JavaScript, on peut utiliser un hack combinant
+        <code>:invalid</code> et <code>:not(:placeholder-shown)</code> (qui
+        cible un champ invalide uniquement si son placeholder n'est plus
+        affiché), bien que ce soit moins précis que <code>:user-invalid</code>.
+      </p>
+    </main>
+  </body>
+</html>

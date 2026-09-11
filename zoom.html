@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Propriété zoom - CSS Cheat Sheet</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html">← Retour au sommaire</a>
+      <h1>10. Le redimensionnement avec recalcul du flux (`zoom`)</h1>
+      <p>
+        <strong>Date d'introduction :</strong> 2024 (Standardisation W3C &
+        Firefox 126+)
+      </p>
+    </header>
+    <main>
+      <h2>Explication</h2>
+      <p>
+        Longtemps considéré comme un hack non standard réservé à Internet
+        Explorer puis WebKit, la propriété <code>zoom</code> a enfin été
+        officialisée par le W3C et implémentée partout (notamment dans Firefox
+        126).
+      </p>
+      <p>
+        Contrairement à <code>transform: scale()</code>, qui agrandit un élément
+        visuellement sans changer l'espace qu'il occupe (créant des
+        chevauchements), <code>zoom</code> force le moteur de rendu à
+        <strong>recalculer la place réelle</strong> de l'élément dans la grille
+        ou le flexbox. C'est l'outil idéal pour des contrôles d'accessibilité ou
+        des cartes interactives qui doivent pousser leurs voisines sans les
+        recouvrir.
+      </p>
+
+      <h2>Démo Live</h2>
+      <div class="demo-container">
+        <p>
+          <em
+            >Survolez la carte centrale. Remarquez que les deux autres cartes
+            s'écartent proprement pour lui faire de la place au lieu d'être
+            recouvertes !</em
+          >
+        </p>
+        <div class="zoom-grid">
+          <div class="zoom-card">Carte 1</div>
+          <div class="zoom-card zoom-target">
+            <strong>Carte Zoomable</strong>
+            <small>(Survolez-moi)</small>
+          </div>
+          <div class="zoom-card">Carte 3</div>
+        </div>
+      </div>
+
+      <h2>Code CSS</h2>
+      <pre><code>.zoom-grid {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.zoom-target:hover {
+  /* Recalcule le layout complet sans débordement incontrôlé */
+  zoom: 1.25;
+}</code></pre>
+
+      <h2>Compatibilité et Fallback</h2>
+      <img
+        class="compatibility-icon"
+        src="./Compatibility/zoom.png"
+        alt="Compatibilité CSS zoom"
+      />
+      <p>
+        <strong>Fallback :</strong> Grâce à la règle <code>@supports</code>, on
+        peut proposer une transition classique avec
+        <code>transform: scale()</code> pour les navigateurs non compatibles, ou
+        laisser l'élément à sa taille naturelle (100%) sans bloquer la
+        navigation :
+      </p>
+      <pre><code>@supports not (zoom: 1) {
+  .zoom-target:hover {
+    transform: scale(1.15);
+  }
+}</code></pre>
+    </main>
+  </body>
+</html>

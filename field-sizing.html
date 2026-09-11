@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Field Sizing - CSS Cheat Sheet</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html">← Retour au sommaire</a>
+      <h1>4. Le redimensionnement auto des champs (`field-sizing: content`)</h1>
+      <p><strong>Date d'introduction :</strong> Début 2024</p>
+    </header>
+
+    <main>
+      <h2>Explication</h2>
+      <p>
+        Tout développeur web a un jour écrit un script JavaScript fastidieux
+        pour écouter l'événement <code>input</code> d'un
+        <code>&lt;textarea&gt;</code> et ajuster sa hauteur en temps réel. La
+        propriété <code>field-sizing: content</code> permet aux inputs et
+        textareas de s'adapter automatiquement à leur contenu de manière
+        totalement native.
+      </p>
+
+      <h2>Démo Live</h2>
+      <div class="demo-container field-sizing-demo">
+        <label for="demo-textarea"
+          ><strong>Textarea auto-extensible :</strong> (tapez plusieurs lignes
+          de texte)</label
+        >
+        <textarea
+          id="demo-textarea"
+          class="auto-resize-textarea"
+          placeholder="Appuyez sur Entrée pour passer à la ligne et voir le champ s'agrandir..."
+        ></textarea>
+
+        <label for="demo-input"
+          ><strong>Input auto-extensible :</strong> (tapez un long mot)</label
+        >
+        <input
+          type="text"
+          id="demo-input"
+          class="auto-resize-input"
+          placeholder="Tapez..."
+        />
+      </div>
+
+      <h2>Code CSS</h2>
+      <pre><code>.auto-resize-textarea {
+  field-sizing: content;
+  min-height: 3lh;
+  max-height: 10lh;
+  width: 100%;
+}
+
+.auto-resize-input {
+  field-sizing: content;
+  min-width: 5ch;
+  max-width: 100%;
+}</code></pre>
+
+      <h2>Compatibilité et Fallback</h2>
+      <img
+        class="compatibility-icon"
+        src="./Compatibility/field-sizing.png"
+        alt="Compatibilité CSS Field Sizing"
+      />
+      <p>
+        <strong>Fallback :</strong> Il s'agit d'une amélioration progressive.
+        Sur un navigateur non compatible, le champ texte adoptera son
+        comportement classique : une taille fixe par défaut avec l'apparition
+        d'une barre de défilement (scroll) si le texte dépasse. L'interface
+        reste totalement utilisable.
+      </p>
+    </main>
+  </body>
+</html>

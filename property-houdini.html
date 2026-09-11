@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Houdini @property - CSS Cheat Sheet</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html">← Retour au sommaire</a>
+      <h1>7. Les dégradés animés (Houdini <code>@property</code>)</h1>
+      <p><strong>Date d'introduction :</strong> 2024</p>
+    </header>
+
+    <main>
+      <h2>Explication</h2>
+      <p>
+        En CSS classique, il est impossible d'animer un dégradé de couleur
+        (background gradient) car le navigateur ne comprend pas la notion
+        mathématique d'angle, il ne voit que du texte. L'API
+        <code>@property</code> permet de "typer" une variable personnalisée en
+        tant qu'angle (<code>&lt;angle&gt;</code>), permettant ainsi au moteur
+        d'interpolation du navigateur de l'animer de 0deg à 360deg.
+      </p>
+
+      <h2>Démo Live</h2>
+      <div class="demo-container">
+        <div class="houdini-card">Carte Premium</div>
+      </div>
+
+      <h2>Code CSS</h2>
+      <pre><code>@property --angle {
+  syntax: "&lt;angle&gt;";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.houdini-card::before {
+  background: conic-gradient(from var(--angle), #ff007f, #3b82f6, #10b981, #ff007f);
+  animation: spin-gradient 3s linear infinite;
+}
+
+@keyframes spin-gradient {
+  to {
+    --angle: 360deg;
+  }
+}</code></pre>
+
+      <h2>Compatibilité et Fallback</h2>
+      <img
+        class="compatibility-icon"
+        src="./Compatibility/property-houdini.png"
+        alt="Compatibilité CSS Houdini Property"
+      />
+      <p>
+        <strong>Fallback :</strong> Amélioration progressive parfaite. Sur un
+        ancien navigateur qui ne comprend pas <code>@property</code>,
+        l'animation sera ignorée, mais le dégradé s'affichera correctement de
+        manière statique à 0 degré (l'initial-value ne sera juste pas animée).
+      </p>
+    </main>
+  </body>
+</html>

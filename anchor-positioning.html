@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anchor Positioning - CSS Cheat Sheet</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html">← Retour au sommaire</a>
+      <h1>6. L'ancrage d'éléments (CSS Anchor Positioning)</h1>
+      <p><strong>Date d'introduction :</strong> 2024</p>
+    </header>
+
+    <main>
+      <h2>Explication</h2>
+      <p>
+        Attacher une infobulle (tooltip) ou un sous-menu à un bouton, et faire
+        en sorte qu'elle ne sorte pas de l'écran quand on scrolle, nécessitait
+        des usines à gaz en JS (comme Popper.js). Le navigateur calcule
+        maintenant la géométrie et les collisions tout seul grâce à
+        <code>anchor()</code> et <code>position-try-fallbacks</code>.
+      </p>
+
+      <h2>Démo Live</h2>
+      <div class="demo-container">
+        <p>
+          <em
+            >Faites défiler le petit bloc ci-dessous vers le bas. Au survol du
+            bouton, le menu s'affiche en dessous. Si le bouton est trop près du
+            bord inférieur, le menu bascule intelligemment au-dessus !</em
+          >
+        </p>
+        <div class="anchor-scroll-area">
+          <button class="anchor-btn">Survolez-moi</button>
+          <div class="anchor-tooltip">Menu volant ancré !</div>
+        </div>
+      </div>
+
+      <h2>Code CSS</h2>
+      <pre><code>.anchor-btn {
+  anchor-name: --my-tooltip-anchor;
+}
+
+.anchor-tooltip {
+  position: absolute;
+  position-anchor: --my-tooltip-anchor;
+  top: anchor(bottom);
+  justify-self: anchor-center;
+  position-try-fallbacks: flip-block;
+}</code></pre>
+
+      <h2>Compatibilité et Fallback</h2>
+      <img
+        class="compatibility-icon"
+        src="./Compatibility/anchor-positioning.png"
+        alt="Compatibilité CSS Anchor Positioning"
+      />
+      <p>
+        <strong>Fallback :</strong> Sur les navigateurs non compatibles,
+        l'élément perdra son ancrage dynamique. La solution de repli consiste à
+        utiliser <code>@supports not (anchor-name: --test)</code> pour
+        positionner le tooltip de manière absolue traditionnelle (centrée
+        grossièrement via des marges), ou bien charger dynamiquement une
+        librairie polyfill (comme Popper.js) uniquement si le support natif
+        échoue.
+      </p>
+    </main>
+  </body>
+</html>

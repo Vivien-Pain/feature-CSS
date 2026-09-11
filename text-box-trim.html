@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Box Trim - CSS Cheat Sheet</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html">← Retour au sommaire</a>
+      <h1>3. La suppression de l'interligne (`text-box-trim`)</h1>
+      <p><strong>Date d'introduction :</strong> Début 2025 (Chrome 133)</p>
+    </header>
+
+    <main>
+      <h2>Explication</h2>
+      <p>
+        Historiquement, centrer parfaitement un texte ou l'aligner avec une
+        icône était un cauchemar à cause du "half-leading" : l'espace vertical
+        invisible généré par la police de caractères (pour les ascendantes et
+        descendantes). La propriété <code>text-box-trim</code> (et sa propriété
+        sœur <code>text-box-edge</code>) permet enfin de rogner cet espace pour
+        que la boîte englobante "colle" exactement à la hauteur réelle des
+        lettres (comme dans les logiciels de design type Figma).
+      </p>
+
+      <h2>Démo Live</h2>
+      <div class="demo-container flex-demo">
+        <div class="card-trim">
+          <div class="heading-trim normal-text">Titre A</div>
+          <div class="description-trim">
+            <strong>Classique :</strong> Remarquez l'espace bleu vide au-dessus
+            du "T" et en dessous du texte. C'est l'espace naturel de la police.
+          </div>
+        </div>
+        <div class="card-trim">
+          <div class="heading-trim trimmed-text">Titre B</div>
+          <div class="description-trim">
+            <strong>Avec text-box-trim :</strong> Les bordures collent
+            parfaitement au haut de la majuscule et au bas des lettres.
+            L'espacement est net et maîtrisé.
+          </div>
+        </div>
+      </div>
+
+      <h2>Code CSS</h2>
+      <pre><code>.titre {
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+}
+
+.titre {
+  text-box: trim-both cap alphabetic;
+}</code></pre>
+
+      <h2>Compatibilité et Fallback</h2>
+      <img
+        class="compatibility-icon"
+        src="./Compatibility/text-box-trim.png"
+        alt="Compatibilité CSS Text Box Trim"
+      />
+      <p>
+        <strong>Fallback :</strong> De l'amélioration progressive pure ! Les
+        anciens navigateurs ignoreront simplement ces propriétés et afficheront
+        le texte avec son espacement vertical habituel. Pas besoin de requête
+        <code>@supports</code> spécifique.
+      </p>
+    </main>
+  </body>
+</html>
