@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <button id="theme-toggle" class="theme-toggle-btn">☀️ Mode Clair</button>
     <header>
       <a href="index.html">← Retour au sommaire</a>
       <h1>5. La validation intelligente (`:user-invalid`)</h1>
       <p><strong>Date d'introduction :</strong> Fin 2023</p>
     </header>
-
     <main>
       <h2>Explication</h2>
       <p>
@@ -25,7 +25,6 @@
         exemple, s'il tape une mauvaise adresse e-mail puis clique en dehors du
         champ).
       </p>
-
       <h2>Démo Live</h2>
       <div class="demo-container">
         <form class="demo-form" onsubmit="event.preventDefault()">
@@ -42,7 +41,6 @@
               >Veuillez entrer une adresse e-mail valide.</span
             >
           </div>
-
           <div class="form-group">
             <label for="username">Nom d'utilisateur (min. 5 caractères)</label>
             <input
@@ -57,7 +55,6 @@
               >Le nom d'utilisateur doit contenir au moins 5 caractères.</span
             >
           </div>
-
           <p>
             <small
               ><em
@@ -69,7 +66,6 @@
           </p>
         </form>
       </div>
-
       <h2>Code CSS</h2>
       <pre><code>.form-control:user-invalid {
   border-color: #ef4444;
@@ -84,7 +80,6 @@
 .form-control:user-invalid ~ .error-message {
   display: block;
 }</code></pre>
-
       <h2>Compatibilité et Fallback</h2>
       <img
         class="compatibility-icon"
@@ -100,5 +95,6 @@
         affiché), bien que ce soit moins précis que <code>:user-invalid</code>.
       </p>
     </main>
+    <script src="script.js"></script>
   </body>
 </html>

@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <button id="theme-toggle" class="theme-toggle-btn">☀️ Mode Clair</button>
     <header>
       <a href="index.html">← Retour au sommaire</a>
       <h1>2. L'animation vers height: auto (`interpolate-size`)</h1>
       <p><strong>Date d'introduction :</strong> Septembre 2024</p>
     </header>
-
     <main>
       <h2>Explication</h2>
       <p>
@@ -24,7 +24,6 @@
         <code>interpolate-size: allow-keywords</code> permet enfin au navigateur
         de calculer cette transition de manière totalement native et fluide.
       </p>
-
       <h2>Démo Live</h2>
       <div class="demo-container">
         <div class="accordion">
@@ -41,7 +40,6 @@
           </div>
         </div>
       </div>
-
       <h2>Code CSS</h2>
       <pre><code>:root {
   interpolate-size: allow-keywords;
@@ -56,7 +54,6 @@
 .accordion:hover .accordion-content {
   height: auto; 
 }</code></pre>
-
       <h2>Compatibilité et Fallback</h2>
       <img
         class="compatibility-icon"
@@ -66,10 +63,11 @@
       <p>
         <strong>Fallback :</strong> Il s'agit d'une amélioration progressive
         (<em>Progressive Enhancement</em>). Si le navigateur ne supporte pas la
-        propriété, l'accordéon s'ouvrira et se fermera de manière instantanée,
+        propriété, l'accordéon s'ouvrira et se fermera de manière instantanée
         sans transition, mais restera 100% fonctionnel et accessible. Aucun code
         de secours (fallback) n'est nécessaire !
       </p>
     </main>
+    <script src="script.js"></script>
   </body>
 </html>

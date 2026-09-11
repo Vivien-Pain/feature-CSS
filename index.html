@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <button id="theme-toggle" class="theme-toggle-btn">☀️ Mode Clair</button>
     <header>
       <p>Guide pratique</p>
       <h1>10 Fonctionnalités CSS</h1>
@@ -14,6 +15,16 @@
         Découvrez les fonctionnalités CSS modernes grâce à ce sommaire et
         accédez directement à chaque fiche.
       </p>
+      
+      <div class="search-container">
+        <input 
+          type="search" 
+          id="search-input" 
+          class="search-input"
+          placeholder="🔍 Filtrer les fonctionnalités..." 
+        />
+      </div>
+
       <nav aria-label="Sommaire des fonctionnalités CSS">
         <ul>
           <li><a href="./attr.html">01 - attr() avancé</a></li>
@@ -21,17 +32,15 @@
           <li><a href="./text-box-trim.html">03 - Text Box Trim</a></li>
           <li><a href="./field-sizing.html">04 - Field Sizing</a></li>
           <li><a href="./user-invalid.html">05 - :user-invalid</a></li>
-          <li>
-            <a href="./anchor-positioning.html">06 - Anchor Positioning</a>
-          </li>
-          <li>
-            <a href="./property-houdini.html">07 - @property (Houdini)</a>
-          </li>
+          <li><a href="./anchor-positioning.html">06 - Anchor Positioning</a></li>
+          <li><a href="./property-houdini.html">07 - @property (Houdini)</a></li>
           <li><a href="./starting-style.html">08 - @starting-style</a></li>
           <li><a href="./progress-function.html">09 - progress()</a></li>
           <li><a href="./zoom.html">10 - zoom</a></li>
         </ul>
       </nav>
     </header>
+    
+    <script src="script.js"></script>
   </body>
 </html>

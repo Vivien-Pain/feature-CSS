@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <button id="theme-toggle" class="theme-toggle-btn">☀️ Mode Clair</button>
     <header>
       <a href="index.html">← Retour au sommaire</a>
       <h1>10. Le redimensionnement avec recalcul du flux (`zoom`)</h1>
@@ -32,7 +33,6 @@
         des cartes interactives qui doivent pousser leurs voisines sans les
         recouvrir.
       </p>
-
       <h2>Démo Live</h2>
       <div class="demo-container">
         <p>
@@ -51,7 +51,6 @@
           <div class="zoom-card">Carte 3</div>
         </div>
       </div>
-
       <h2>Code CSS</h2>
       <pre><code>.zoom-grid {
   display: flex;
@@ -63,7 +62,6 @@
   /* Recalcule le layout complet sans débordement incontrôlé */
   zoom: 1.25;
 }</code></pre>
-
       <h2>Compatibilité et Fallback</h2>
       <img
         class="compatibility-icon"
@@ -83,5 +81,6 @@
   }
 }</code></pre>
     </main>
+    <script src="script.js"></script>
   </body>
 </html>

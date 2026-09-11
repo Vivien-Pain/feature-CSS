@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <button id="theme-toggle" class="theme-toggle-btn">☀️ Mode Clair</button>
     <header>
       <a href="index.html">← Retour au sommaire</a>
       <h1>4. Le redimensionnement auto des champs (`field-sizing: content`)</h1>
       <p><strong>Date d'introduction :</strong> Début 2024</p>
     </header>
-
     <main>
       <h2>Explication</h2>
       <p>
@@ -23,7 +23,6 @@
         textareas de s'adapter automatiquement à leur contenu de manière
         totalement native.
       </p>
-
       <h2>Démo Live</h2>
       <div class="demo-container field-sizing-demo">
         <label for="demo-textarea"
@@ -46,7 +45,6 @@
           placeholder="Tapez..."
         />
       </div>
-
       <h2>Code CSS</h2>
       <pre><code>.auto-resize-textarea {
   field-sizing: content;
@@ -60,7 +58,6 @@
   min-width: 5ch;
   max-width: 100%;
 }</code></pre>
-
       <h2>Compatibilité et Fallback</h2>
       <img
         class="compatibility-icon"
@@ -75,5 +72,6 @@
         reste totalement utilisable.
       </p>
     </main>
+    <script src="script.js"></script>
   </body>
 </html>

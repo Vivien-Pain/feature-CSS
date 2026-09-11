@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <button id="theme-toggle" class="theme-toggle-btn">☀️ Mode Clair</button>
     <header>
       <a href="index.html">← Retour au sommaire</a>
       <h1>8. Animer depuis display: none (<code>@starting-style</code>)</h1>
       <p><strong>Date d'introduction :</strong> Début 2024</p>
     </header>
-
     <main>
       <h2>Explication</h2>
       <p>
@@ -25,7 +25,6 @@
         son insertion dans le rendu (comme une balise
         <code>&lt;dialog&gt;</code>).
       </p>
-
       <h2>Démo Live</h2>
       <div class="demo-container" style="text-align: center">
         <button
@@ -34,7 +33,6 @@
         >
           Ouvrir la Modale
         </button>
-
         <dialog id="demoModal" class="modal-dialog">
           <h2>Modale animée nativement</h2>
           <p>
@@ -49,7 +47,6 @@
           </button>
         </dialog>
       </div>
-
       <h2>Code CSS</h2>
       <pre><code>.modal-dialog {
   transition: display 0.4s allow-discrete, overlay 0.4s allow-discrete, transform 0.4s, opacity 0.4s;
@@ -63,7 +60,6 @@
     transform: scale(0.9);
   }
 }</code></pre>
-
       <h2>Compatibilité et Fallback</h2>
       <img
         class="compatibility-icon"
@@ -77,5 +73,6 @@
         conservant ainsi 100% de la fonctionnalité et de l'accessibilité.
       </p>
     </main>
+    <script src="script.js"></script>
   </body>
 </html>

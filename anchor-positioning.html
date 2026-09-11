@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <button id="theme-toggle" class="theme-toggle-btn">☀️ Mode Clair</button>
     <header>
       <a href="index.html">← Retour au sommaire</a>
       <h1>6. L'ancrage d'éléments (CSS Anchor Positioning)</h1>
       <p><strong>Date d'introduction :</strong> 2024</p>
     </header>
-
     <main>
       <h2>Explication</h2>
       <p>
@@ -22,7 +22,6 @@
         maintenant la géométrie et les collisions tout seul grâce à
         <code>anchor()</code> et <code>position-try-fallbacks</code>.
       </p>
-
       <h2>Démo Live</h2>
       <div class="demo-container">
         <p>
@@ -37,7 +36,6 @@
           <div class="anchor-tooltip">Menu volant ancré !</div>
         </div>
       </div>
-
       <h2>Code CSS</h2>
       <pre><code>.anchor-btn {
   anchor-name: --my-tooltip-anchor;
@@ -50,7 +48,6 @@
   justify-self: anchor-center;
   position-try-fallbacks: flip-block;
 }</code></pre>
-
       <h2>Compatibilité et Fallback</h2>
       <img
         class="compatibility-icon"
@@ -61,11 +58,12 @@
         <strong>Fallback :</strong> Sur les navigateurs non compatibles,
         l'élément perdra son ancrage dynamique. La solution de repli consiste à
         utiliser <code>@supports not (anchor-name: --test)</code> pour
-        positionner le tooltip de manière absolue traditionnelle (centrée
+        positionner le tooltip de manière absolue traditionnelle (centré
         grossièrement via des marges), ou bien charger dynamiquement une
         librairie polyfill (comme Popper.js) uniquement si le support natif
         échoue.
       </p>
     </main>
+    <script src="script.js"></script>
   </body>
 </html>
