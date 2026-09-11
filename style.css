@@ -1,27 +1,20 @@
-/* --- POLICES ET VARIABLES --- */
-/* Import d'une police manuscrite pour l'effet craie et écriture */
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Inter:wght@400;600&display=swap');
 
 :root {
-  /* Couleurs Craie */
   --chalk-white: #f8f9fa;
   --chalk-yellow: #fde047;
   --chalk-pink: #f9a8d4;
   --chalk-blue: #93c5fd;
 
-  /* Couleurs Tableau et Papier */
   --board-bg: #22422c;
-  /* Vert tableau classique */
   --board-dark: #162b1c;
   --paper-bg: #fefce8;
-  /* Couleur feuille de papier / post-it */
   --ink-color: #1e293b;
 
-  /* Effet bordure tracée à la main */
   --sketchy-border: 255px 15px 225px 15px / 15px 225px 15px 255px;
 }
 
-/* --- BASE & TABLEAU (Background) --- */
+*,
 *::before,
 *::after {
   box-sizing: border-box;
@@ -34,18 +27,15 @@ body {
   max-width: 850px;
   margin: 0 auto;
   padding: 40px 20px;
-
   color: var(--chalk-white);
   background-color: var(--board-bg);
 
-  /* Effet de texture de tableau effacé */
   background-image:
     radial-gradient(circle, rgba(255, 255, 255, 0.03) 2px, transparent 2.5px),
     linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
   background-size: 30px 30px, 100% 100%;
 }
 
-/* --- TYPOGRAPHIE À LA CRAIE --- */
 h1,
 h2,
 h3 {
@@ -89,7 +79,6 @@ a:hover {
   border-bottom-color: var(--chalk-white);
 }
 
-/* --- NAVIGATION (Sommaire façon Post-its) --- */
 nav ul {
   list-style: none;
   padding: 0;
@@ -103,12 +92,10 @@ nav a {
   display: block;
   padding: 1.5rem;
   background-color: #fef08a;
-  /* Post-it jaune */
   color: var(--ink-color);
   text-decoration: none;
   border: none;
   box-shadow: 3px 4px 8px rgba(0, 0, 0, 0.4);
-  /* Forme imparfaite */
   border-radius: var(--sketchy-border);
   transform: rotate(-2deg);
   transition: transform 0.2s, box-shadow 0.2s;
@@ -116,13 +103,11 @@ nav a {
 
 nav li:nth-child(even) a {
   background-color: #bbf7d0;
-  /* Post-it vert */
   transform: rotate(2deg);
 }
 
 nav li:nth-child(3n) a {
   background-color: #fbcfe8;
-  /* Post-it rose */
   transform: rotate(-1deg);
 }
 
@@ -132,7 +117,6 @@ nav a:hover {
   color: black;
 }
 
-/* --- CODE & PREFORMATAGE (Mini-ardoise) --- */
 code {
   background: rgba(255, 255, 255, 0.1);
   padding: 0.2rem 0.5rem;
@@ -151,43 +135,36 @@ pre {
   overflow-x: auto;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
   font-family: monospace;
+  position: relative;
 }
 
 pre code {
   background: transparent;
   color: #a7f3d0;
-  /* Texte de code en craie verte claire */
   padding: 0;
 }
 
-/* --- DÉMOS : FEUILLES DE CAHIER --- */
 .demo-container {
   background-color: var(--paper-bg);
   color: var(--ink-color);
   padding: 2.5rem;
   margin: 2.5rem 0;
   font-family: 'Inter', sans-serif;
-  /* Police lisible pour les démos */
   font-size: 1rem;
 
-  /* Lignes de cahier d'écolier */
   background-image: repeating-linear-gradient(transparent, transparent 29px, #93c5fd 29px, #93c5fd 30px);
   background-position: 0 1.2rem;
 
-  /* Bordure tracée à la main et ombre */
   border: 2px solid #94a3b8;
   border-radius: var(--sketchy-border);
   box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.4);
 }
 
-/* Les paragraphes dans les feuilles de cahier */
 .demo-container p {
   line-height: 30px;
-  /* Aligné sur les lignes du cahier */
   margin-top: -5px;
 }
 
-/* --- IMAGES --- */
 .compatibility-icon {
   width: 100%;
   max-width: 800px;
@@ -201,12 +178,9 @@ pre code {
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* --- STYLES SPÉCIFIQUES DES DÉMOS --- */
-
-/* 1. attr() */
 .attr-box {
-  background-color: attr(data-color, color, #cbd5e1);
-  width: attr(data-width, length-percentage, 100%);
+  background-color: #cbd5e1;
+  width: 100%;
   padding: 1rem;
   margin-bottom: 1rem;
   font-weight: bold;
@@ -215,7 +189,6 @@ pre code {
   box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* 2. Interpolate-size (Accordéon) */
 :root {
   interpolate-size: allow-keywords;
 }
@@ -252,7 +225,6 @@ pre code {
   height: auto;
 }
 
-/* 3. Text Box Trim */
 .demo-container.flex-demo {
   display: flex;
   gap: 2rem;
@@ -287,7 +259,6 @@ pre code {
   color: #475569;
 }
 
-/* 4. Field Sizing */
 .field-sizing-demo {
   display: flex;
   flex-direction: column;
@@ -316,7 +287,6 @@ pre code {
   max-width: 100%;
 }
 
-/* 5. User Invalid */
 .demo-form {
   display: flex;
   flex-direction: column;
@@ -360,7 +330,6 @@ pre code {
   display: block;
 }
 
-/* 6. Anchor */
 .anchor-scroll-area {
   height: 150px;
   border: 2px solid var(--ink-color);
@@ -401,7 +370,6 @@ pre code {
   opacity: 1;
 }
 
-/* 7. Houdini */
 @property --angle {
   syntax: "<angle>";
   initial-value: 0deg;
@@ -445,7 +413,6 @@ pre code {
   }
 }
 
-/* 8. Starting-style (Modale) */
 .modal-btn {
   padding: 10px 20px;
   background-color: #8b5cf6;
@@ -496,7 +463,6 @@ pre code {
   cursor: pointer;
 }
 
-/* 9. Progress */
 .progress-resize-box {
   container-type: inline-size;
   resize: horizontal;
@@ -527,7 +493,6 @@ pre code {
   width: calc(progress(100cqw, 250px, 600px) * 100%);
 }
 
-/* 10. Zoom */
 .zoom-grid {
   display: flex;
   gap: 1.5rem;
@@ -587,7 +552,6 @@ pre code {
   opacity: 0.7;
 }
 
-/* --- BOUTON THEME (CLAIR/SOMBRE) --- */
 .theme-toggle-btn {
   position: fixed;
   top: 20px;
@@ -632,10 +596,6 @@ body.light-theme .search-input {
   border-color: var(--chalk-white);
 }
 
-pre {
-  position: relative;
-}
-
 .copy-btn {
   position: absolute;
   top: 10px;
@@ -650,7 +610,6 @@ pre {
   font-size: 0.85rem;
   font-weight: bold;
   opacity: 0;
-  /* Caché par défaut */
   transition: opacity 0.2s ease, background-color 0.2s ease;
 }
 
