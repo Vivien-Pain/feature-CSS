@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll Animations - CSS Cheat Sheet</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button id="theme-toggle" class="theme-toggle-btn">🌙 Mode Clair</button>
+    <header>
+      <a href="index.html">⬅ Retour au sommaire</a>
+      <h1>11. Les Animations au Défilement (`animation-timeline`)</h1>
+      <p><strong>Date d'introduction :</strong> 2023</p>
+    </header>
+    <main>
+      <h2>Explication</h2>
+      <p>
+        Animer des éléments lorsqu'ils entrent dans le champ de vision nécessitait historiquement de lourds scripts JavaScript (Intersection Observer). Avec <code>animation-timeline: view()</code>, le navigateur lie nativement la progression d'une animation CSS à la visibilité de l'élément dans sa zone de défilement.
+      </p>
+      <h2>Démo Live</h2>
+      <div class="demo-container">
+        <p>
+          <strong>Faites défiler la zone ci-dessous</strong>. Les cartes apparaissent en fondu et glissent vers le haut exactement au moment où elles entrent dans la zone visible.
+        </p>
+        <div class="scroll-reveal-area">
+          <div class="reveal-card">Carte 1</div>
+          <div class="reveal-card">Carte 2</div>
+          <div class="reveal-card">Carte 3</div>
+          <div class="reveal-card">Carte 4</div>
+          <div class="reveal-card">Carte 5</div>
+          <div class="reveal-card">Carte 6</div>
+          <div class="reveal-card">Carte 7</div>
+          <div class="reveal-card">Carte 8</div>
+          <div class="reveal-card">Carte 9</div>
+          <div class="reveal-card">Carte 10</div>
+        </div>
+      </div>
+      <h2>Code CSS</h2>
+      <pre><code>@supports (animation-timeline: view()) {
+  .reveal-card {
+    animation: appear linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}</code></pre>
+      <h2>Compatibilité et Fallback</h2>
+      <img
+        class="compatibility-icon"
+        src="./Compatibility/animation-timeline.png"
+        alt="Compatibilité CSS Animation Timeline"
+      />
+      <p>
+        <strong>Fallback :</strong> Le support de cette fonctionnalité étant encore récent, il est impératif d'encapsuler l'appel à l'animation dans une règle <code>@supports (animation-timeline: view())</code> (comme dans le code ci-dessus). Ainsi, sur un navigateur non compatible, les cartes s'afficheront de manière statique et resteront parfaitement visibles au lieu de rester invisibles.
+      </p>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

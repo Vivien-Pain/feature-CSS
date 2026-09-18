@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Wrap - CSS Cheat Sheet</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button id="theme-toggle" class="theme-toggle-btn">🌙 Mode Clair</button>
+    <header>
+      <a href="index.html">⬅ Retour au sommaire</a>
+      <h1>11. L'Équilibre Typographique (`text-wrap`)</h1>
+      <p><strong>Date d'introduction :</strong> Fin 2023</p>
+    </header>
+    <main>
+      <h2>Explication</h2>
+      <p>
+        Le comportement par défaut du texte est de remplir la ligne jusqu'au bout avant de passer à la suivante, ce qui crée souvent des veuves (un mot seul sur la dernière ligne) ou des titres déséquilibrés. La propriété <code>text-wrap</code> avec les valeurs <code>balance</code> et <code>pretty</code> confie au navigateur le calcul d'un rendu typographique parfaitement harmonieux.
+      </p>
+      <h2>Démo Live</h2>
+      <div class="demo-container">
+        <p>
+          <strong>Redimensionnez la boîte</strong> en tirant sur le bord droit. Observez comment le titre et le paragraphe de droite se réorganisent intelligemment pour éviter les mots orphelins et les asymétries, contrairement à la colonne de gauche.
+        </p>
+        <div class="wrap-resize-box">
+          <div class="wrap-grid">
+            <div class="wrap-col">
+              <div class="badge-classic">Classique</div>
+              <h3>Un titre de démonstration qui risque de se casser très mal</h3>
+              <p>Voici un paragraphe de texte classique. Si vous redimensionnez la largeur de cette boîte, il y a de très fortes chances qu'un mot se retrouve tout seul sur la ligne du bas.</p>
+            </div>
+            <div class="wrap-col">
+              <div class="badge-modern">Équilibré</div>
+              <h3 class="balanced-title">Un titre de démonstration qui risque de se casser très mal</h3>
+              <p class="pretty-text">Voici un paragraphe de texte classique. Si vous redimensionnez la largeur de cette boîte, il y a de très fortes chances qu'un mot se retrouve tout seul sur la ligne du bas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2>Code CSS</h2>
+      <pre><code>.balanced-title {
+  text-wrap: balance;
+}
+
+.pretty-text {
+  text-wrap: pretty;
+}</code></pre>
+      <h2>Compatibilité et Fallback</h2>
+      <img
+        class="compatibility-icon"
+        src="./Compatibility/text-wrap.png"
+        alt="Compatibilité CSS Text Wrap"
+      />
+      <p>
+        <strong>Fallback :</strong> Il s'agit d'une amélioration progressive pure. Sur les anciens navigateurs, la propriété sera simplement ignorée et le texte ira à la ligne de manière classique. L'interface reste parfaitement lisible sans nécessiter aucun code de secours (polyfill ou JavaScript).
+      </p>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
